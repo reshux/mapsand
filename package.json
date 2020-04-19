@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --open --config ./webpack/webpack.config.js --env.env=dev",
-    "build:prod:bundleVisualizer": "npm run build -- --progress --profile --env.addons=bundleVisualizer",
-    "build:prod:bundleAnalyzer": "npm run build -- --env.addons=bundleAnalizer",
-    "build:prod:stats": "npm run build -- --progress --profile --json > ./dist/stats/stats.json",
     "build": "webpack --config ./webpack/webpack.config.js --env.env=prod",
     "debug:prod": "npm run debug -- --env.env=prod",
     "debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config ./webpack/webpack.config.js"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-proposal-optional-catch-binding": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.9.5",
+    "@babel/plugin-transform-spread": "^7.8.3",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-plugin-transform-class-properties": "6.24.1",
@@ -30,7 +31,10 @@
     "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.11",
+    "@material-ui/icons": "^4.9.1",
     "core-js": "2.5.0",
+    "mapbox-gl": "^1.9.1",
     "react": "15.6.1",
     "react-dom": "15.6.1"
   }

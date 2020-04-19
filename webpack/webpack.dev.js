@@ -50,6 +50,26 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.less$/i,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: {
+                hack: `true; @import 'App.less'`,
+              },
+              javascriptEnabled: true,
+            },
+          },
+        ],
+      },
     ],
   },
 };

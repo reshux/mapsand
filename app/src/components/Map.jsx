@@ -1,27 +1,19 @@
 import React from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import PropTypes from 'prop-types';
+
+import ReactMapboxGl, { Layer, Feature, MapContext } from 'react-mapbox-gl';
 
 const accessToken = process.env.MAPBOX_TOKEN;
 
-const Map = (props) => {
-  let ReactMap = ReactMapboxGl({
-    accessToken,
-  });
+const Map = ({ mapStyle }) => {
+	let ReactMap = ReactMapboxGl({
+		accessToken,
+	});
+	return <ReactMap style={mapStyle} className='mapsand-map'></ReactMap>;
+};
 
-  return (
-    <ReactMap
-      style='mapbox://styles/mapbox/streets-v9'
-      containerStyle={{
-        height: '100vh',
-        width: '100vw',
-      }}
-      {...props}
-    >
-      <Layer type='symbol' id='marker' layout={{ 'icon-image': 'marker-15' }}>
-        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
-      </Layer>
-    </ReactMap>
-  );
+Map.propTypes = {
+	mapStyle: PropTypes.string.isRequired,
 };
 
 export default Map;

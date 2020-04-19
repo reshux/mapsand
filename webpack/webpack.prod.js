@@ -2,6 +2,8 @@ const commonPaths = require('./common-paths');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const publicUrl = '.';
 
 module.exports = {
   bail: true,
@@ -22,6 +24,9 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
+    }),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+      PUBLIC_URL: publicUrl,
     }),
     new webpack.DefinePlugin({
       'process.env': {

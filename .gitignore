@@ -12,3 +12,6 @@ package-lock.json
 # Optional npm cache directory
 .npm
 npm-debug.log*
+
+#env
+.env

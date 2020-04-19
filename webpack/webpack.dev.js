@@ -1,6 +1,8 @@
 const commonPaths = require('./common-paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const publicUrl = '';
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -24,6 +26,9 @@ module.exports = {
       inject: true,
       template: commonPaths.contentBasePath + '/index.html',
     }),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+      PUBLIC_URL: publicUrl,
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -41,20 +46,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1,
-              minimize: true,
-            },
-          },
-        ],
-        include: commonPaths.stylesheetsPath,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

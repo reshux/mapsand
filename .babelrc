@@ -1,11 +1,11 @@
 {
-  "presets": ["es2015", "react"],
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
     "react-hot-loader/babel",
-    "transform-class-properties",
     "@babel/plugin-transform-destructuring",
     "@babel/plugin-transform-spread",
     "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-proposal-optional-catch-binding"
+    "@babel/plugin-proposal-optional-catch-binding",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

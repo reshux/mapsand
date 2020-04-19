@@ -2,6 +2,7 @@ const commonPaths = require('./common-paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const DotenvPlugin = require('dotenv-webpack');
 const publicUrl = '';
 
 module.exports = {
@@ -29,6 +30,7 @@ module.exports = {
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
       PUBLIC_URL: publicUrl,
     }),
+    new DotenvPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

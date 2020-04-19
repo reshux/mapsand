@@ -20,6 +20,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "0.28.4",
+    "dotenv-webpack": "^1.7.0",
     "html-webpack-plugin": "^4.2.0",
     "react-dev-utils": "^10.2.1",
     "react-hot-loader": "^4.12.20",

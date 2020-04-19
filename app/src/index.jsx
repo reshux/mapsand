@@ -14,5 +14,5 @@ if (module.hot) {
 }
 
 function renderWithHotReload(App) {
-  render(<App />, document.getElementById('starter'));
+  render(<App />, document.getElementById('root'));
 }

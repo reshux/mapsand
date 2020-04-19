@@ -1,54 +1,34 @@
 const commonPaths = require('./common-paths');
 const webpack = require('webpack');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// `publicUrl` is just like `publicPath`, but we will provide it to our app
-// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-// In development, this will be an empty string.
-const publicUrl = '';
-
 module.exports = {
-  // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
   devtool: 'inline-source-map',
   output: {
-    // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
   },
   devServer: {
-    // All options here: https://webpack.js.org/configuration/dev-server/
-
-    hot: true, // enable HMR on the server
-    contentBase: commonPaths.contentBasePath, // match the output path
-    publicPath: '/', // match the output `publicPath`
-    //host:"0.0.0.0", // Enable to integrate with Docker
+    hot: true,
+    contentBase: commonPaths.contentBasePath,
+    publicPath: '/',
     port: 3000,
     historyApiFallback: true,
-    // All the stats options here: https://webpack.js.org/configuration/stats/
     stats: {
-      colors: true, // color is life
-      chunks: false, // this reduces the amount of stuff I see in my terminal; configure to your needs
+      colors: true,
+      chunks: false,
       'errors-only': true,
     },
   },
   plugins: [
-    // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
       template: commonPaths.contentBasePath + '/index.html',
     }),
-
-    // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
-
-    // prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
-
-    // do not emit compiled assets that include errors
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   module: {
-    // loaders -> rules in webpack 2
     rules: [
       {
         test: /\.jsx$/,
@@ -57,7 +37,7 @@ module.exports = {
             loader: 'babel-loader',
           },
         ],
-        include: commonPaths.srcPath, // Use include instead exclude to improve the build performance
+        include: commonPaths.srcPath,
       },
       {
         test: /\.css$/i,
@@ -74,7 +54,7 @@ module.exports = {
             },
           },
         ],
-        include: commonPaths.stylesheetsPath, // Use include instead exclude to improve the build performance
+        include: commonPaths.stylesheetsPath,
       },
     ],
   },

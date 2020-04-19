@@ -1,6 +1,6 @@
 const errorConstants = require('./error-constants');
 const commonConfig = require('./webpack.common');
-const webpackMerge = require('webpack-merge'); // Similar to Object.assign but with specific order which benefits webpack
+const webpackMerge = require('webpack-merge');
 
 module.exports = (env) => {
   console.log(env);
